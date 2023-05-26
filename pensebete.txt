@@ -1,0 +1,45 @@
+Cloud computing
+Définition
+
+Le Cloud Computing est un modèle de fourniture de services informatiques à distance via internet.
+Il permet l'utilisation de ressources informatique telles que des serveurs, des applications et des logiciels.
+Ce fait via la mise à disposition de serveurs distants appartenant à des fournisseurs de services Cloud.
+
+Le Cloud Computing dans le Metaverse
+   
+Celui-ci offre une solution pour répondre au besoin de fournir une infrastructure informatique à distance.
+Il peut aider aussi au problème de fragmentation de l'expérience utilisateur, en lui donnant accès à 
+un environnement virtuel partagés via internet.
+Il permet aux développeurs de créer des mondes virtuels complexes et dynamiques, dans lesquelles 
+les joueurs peuvent interagir avec des milliers d'autres personnes.
+Pour des corrections et mise à jour, c'est très efficace.
+
+
+L'interopérabilité
+C'est quoi l'interopérabilité
+
+C'est la capacité des systèmes informatiques à communiquer et à échanger des informations de manière efficace 
+et sans entraves.
+Les systèmes peuvent échanger des données et des fichiers sans avoir besoin de les modifier ou de faire une conversion
+pour qu'ils s'adaptent à chaque système. 
+Cela permet de communiquer et de partager des données indépendamment de la plate-forme ou de l'OS.
+
+
+Interopérabilité et Metaverse
+
+Il permet de faire communiquer des mondes virtuels entre eux. 
+Ainsi, un avatar peu voyager de monde en monde tout en conservant son apparence et son stuff dans le jeu.
+Pour mettre en place ceci, les développeurs doivent adopter des normes communes pour 
+la communication et le partage de données.
+  
+
+Sécurité et vie privée dans le Metaverse
+
+Les risques dans le Metaverse au niveau de la sécurité sont la fraude, 
+le vol d'identité, les logiciels malveillants.
+Pour minimiser les risques, l'authentification à deux facteurs en fait partie, 
+ainsi que le chiffrement des données et la mise à jour des logiciels
+Du point de vue de la vie privée, les développeurs doivent également respecter les 
+lois sur la protection des données et de la vie privée, en obtenant le consentement des 
+utilisateurs avant de les collecter.
+  

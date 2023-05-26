@@ -1,0 +1,10 @@
+/.direnv/
+/build/
+/bin/
+/.vscode/
+/out/
+*.bak*
+indent.log
+/result/
+/result
+*.pdf

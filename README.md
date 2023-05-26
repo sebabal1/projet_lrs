@@ -111,6 +111,5 @@ kpsewhich beamerthemeec.sty
 The return of that command should be a full path to the file, meaning that the
 EC theme has been correctly installed.
 
-
-Commande pour lancer un watcher: 
+Commande pour lancer un watcher:
 nix run .#watch-memoire-umons -- --output=foo.pdf src/memoire-umons/memoire-umons.md

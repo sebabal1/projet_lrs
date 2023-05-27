@@ -186,11 +186,12 @@ Ainsi, en trouvant ce point de seuil, on définit la valeur d'Eps qui sépare le
 
 Dans l'article de Ester et al. \footfullcite{einstein} (to do), on constate que la valeur de k, une fois à 4, dans le graphe k-dist pour des données bidimensionnelles ne change pas grandement. À partir, de la valeur k=3, le graphe ne change que très peu lui aussi. C'est pour cette raison, qu'Ester et al. (to do) décident de garder par défaut la valeur de k=4 pour MinPts pour calculer le graphe k-dist.
 
-![test\label{mylabel}](src/memoire-umons/images/k_dist_sample_6.png)
+![Graphique k-dist du schéma 6 \label{k_dist}](src/memoire-umons/images/k_dist_sample_6.png)
 
-See figure \ref{mylabel}
 
-(To do faire les graphes.) toto
+![Graphique avec des données triées pour la db \ref{k_dist}](src/memoire-umons/images/graphique_trie_4_dist_schema_6.png)
+
+
 
 \chapter{Performances}
 
@@ -206,9 +207,35 @@ Dans cette partie, on va s'intéresser aux performances entre DBSCAN et CLARANS,
 
 Comme CLARANS et DBSCAN sont deux algorithmes de regroupement distincts, il n'existe pas de mesure quantitative commune permettant d'évaluer précisément leur classification. L'évaluation faite ici est principalement visuelle
 
-Une construction de différentes bases de données sont utilisées pour comparer visuellement l'exécution de DBSCAN avec celui de CLARANS. Les données sont générées aléatoirement en suivant certains modèles, ceux-ci vont permettre une meilleure visualisation des différents algorithmes. Ils sont visibles sur la figure (to do).
+Une construction de différentes bases de données sont utilisées pour comparer visuellement l'exécution de DBSCAN avec celui de CLARANS. Les données sont générées aléatoirement en suivant certains modèles, ceux-ci vont permettre une meilleure visualisation des différents algorithmes. Ils sont visibles sur \ref{all_schemas}.
+ 
+![Différentes base de données \label{all_schemas}](src/memoire-umons/images/echantillons_all.png)
 
-Pour pouvoir tester
+
+
+Dans un premier temps, l'exécution de lalgorithme de CLARANS, le paramètre k est choisit pour aider l'algorithme a trouvé plus facilement les différents clusters. Cela à était fait par essaies erreurs jusqu'au moment ou l'algorithme parrassait regrouper plusieurs clusters visible facilement à l'oeil. On peut remarquer le résultat sur la figure \ref{clarans_all}.
+
+
+![Résultats de CLARANS sur les bases de données \label{clarans_all}](src/memoire-umons/images/clarans_all.png)
+
+Dans le diagramme 6, il est observé que CLARANS forme trois clusters, cependant, à première vue, on peut constater qu'il y a en réalité deux regroupements au total. Cela met en évidence le fait que CLARANS n'est pas aussi efficace dans l'identification des clusters, en particulier lorsque ces derniers ne contiennent pas la même quantité de points.
+
+Dans le diagramme 4, il est remarqué que tous les clusters ne sont pas correctement identifiés, certains sont même divisés en deux. Tous les points sont inclus, ce qui indique également que CLARANS ne gère pas efficacement les points de bruit.
+
+En ce qui concerne le diagramme 5, les clusters sont représentés de manière précise.
+
+En ce qui concerne le diagramme 3, les clusters sont identifiés, à l'exception d'un cluster qui est divisé en deux. Malgré la proximité des points, on peut clairement constater les limites de CLARANS.
+
+
+Passons maintenant à l'examen des regroupements à l'aide de l'algorithme DBSCAN \ref{dbscan_all}. Dans les diagrammes un, trois, quatre et six, nous observons la présence de regroupements comportant un nombre variable de points et qui démontrent également une résistance au bruit.
+
+Dans les diagrammes deux et cinq, on rencontre un problème lié à la différence de densité entre les clusters existants. Cette disparité pose un défi car quelle que soit la valeur d'Eps choisie, il y aura des difficultés. Les clusters les plus denses peuvent être identifiés correctement, même si certains points sont considérés comme aberrants. En revanche, les clusters moins denses peuvent être identifiés correctement, mais tous les clusters présentant une grande densité et étant proches d'autres clusters seront regroupés en un seul cluster par DBSCAN. Dans l'article publié par Pearson Education(todo), un modèle HDBSCAN permet de résoudre ce problème de densité.
+
+
+![Résultats de DBSCAN sur les bases de données \label{dbscan_all}](src/memoire-umons/images/dbscan_all.png)
+
+
+
 
 \chapter{Conclusion}
 

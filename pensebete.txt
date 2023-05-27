@@ -43,3 +43,30 @@ Du point de vue de la vie privée, les développeurs doivent également respecte
 lois sur la protection des données et de la vie privée, en obtenant le consentement des 
 utilisateurs avant de les collecter.
   
+
+
+
+Source pour K-means : l'algorithme K-means est "Introduction to Data Mining" de Tan, Steinbach, et Kumar.
+Source pour K-medoid : k-medoid est "Pattern Recognition and Machine Learning" de Christopher M. Bishop.
+Source pour K-medoid : Han, J., Pei, J., Kamber, M., & Tan, P. N. (2011). Data mining: concepts and techniques (3rd ed.). Morgan Kaufmann.
+
+Source pour la partie DBSCAN + HDBSCAN : Le livre "Introduction to Data Mining" de Tan, Steinbach et Kumar, publié par Pearson Education, mentionne l'algorithme DBSCAN et explique comment il fonctionne pour regrouper les données en clusters en fonction de leur proximité. Il mentionne également la notion de points centraux et de points à la frontière, ainsi que le problème de l'affectation de ces points à des clusters différents.
+
+L'article "Hierarchical Density-Based Clustering" de Campello, Moulavi et Sander, publié dans le Journal of Machine Learning Research, présente le modèle HDBSCAN comme une amélioration de DBSCAN pour résoudre le problème des points à la frontière. L'article explique comment HDBSCAN fonctionne en éliminant la notion de point frontière et en utilisant une hiérarchie de clusters pour produire des clusters plus homogènes et plus cohérents
+
+Source pour les 4 paramètres : Ankerst, M., Breunig, M. M., Kriegel, H.-P., & Sander, J. (1999). OPTICS: Ordering points to identify the clustering structure. In ACM SIGMOD Record (Vol. 28, No. 2, pp. 49-60). ACM.
+
+Source pour lemme 2 : Article scientifique : "Density-Based Clustering in Spatial Databases: A Review" par Rezaei et Aghabozorgi, publié en 2015 dans le journal "International Journal of Database Theory and Application". Le lemme 2 est discuté en section 3.1 de cet article : https://sci-hub.ru/https://link.springer.com/article/10.1023/A:1009745219419
+
+https://sci-hub.ru/https://link.springer.com/chapter/10.1007/978-3-642-37456-2_14
+
+Source pour MinPts et Eps sur le choix des valeurs : https://arxiv.org/ftp/arxiv/papers/1809/1809.06189.pdf
+
+11 : . Gunawan. A faster algorithm for DBSCAN. Master’s thesis,
+Technische University Eindhoven, March 2013.
+
+Ester et al : M. Ester, H. Kriegel, J. Sander, and X. Xu. A density-based
+algorithm for discovering clusters in large spatial databases with
+noise. In SIGKDD, pages 226–231, 1996
+
+Complexité : https://www.cse.cuhk.edu.hk/~taoyf/paper/sigmod15-dbscan.pdf

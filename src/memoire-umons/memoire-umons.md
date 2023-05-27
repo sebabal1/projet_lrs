@@ -3,9 +3,9 @@ author: "Bal Sebastien"
 date: 2022-2023
 documentclass: memoire-umons
 title: DBSCAN
-subtitle: Memoire subtitle
+subtitle: Lecture et rédaction scientifiques
 directeur: Mr Ben Thaieb
-service: Master Sciences informatique
+service: Master Sciences Informatique
 classoption:
   - oneside
 toc: true
@@ -211,7 +211,7 @@ Dans l'article de Ester et al. \footfullcite{ester}, on constate que la valeur d
 
 Cette fonction utilisée dans l'algorithme de DBSCAN permet de rechercher des voisins, celle-ci dépend généralement de l'algorithme d'accès spatial utilisé pour organiser les données. En règle générale, ce sont les arbres R\*-trees qui sont utilisés pour accélérer la recherche des voisins. Cette complexité montrée par Martin et al. \footfullcite{ester}, démontre que cette complexité est fréquemment en $\mathcal{O}(log (n + k))$, dans lequel n est le nombre total de points dans la base de données et k le nombre moyen de voisins dans le voisinage.
 
-Dans leur article Ester et al.\footfullcite{ester} prétendent que leur algorithme DBSCAN se termine en $\mathcal{O}(n\cdot log (n))$. Cependant il s'avère que cette affirmation est incorrecte, comme l'a récemment souligné Gunawan\fullfootcite{wang2013faster} l'algorithme de (Ester) s'exécute en $\mathcal{O}(n^2)$ dans le pire des cas, indépendamment des paramètres Eps et MinPts.
+Dans leur article Ester et al.\footfullcite{ester} prétendent que leur algorithme DBSCAN se termine en $\mathcal{O}(n\cdot log (n))$. Cependant il s'avère que cette affirmation est incorrecte, comme l'a récemment souligné Gunawan\footfullcite{wang2013faster} l'algorithme de (Ester)\footfullcite{ester} s'exécute en $\mathcal{O}(n^2)$ dans le pire des cas, indépendamment des paramètres Eps et MinPts.
 
 ## Comparaison entre DBSCAN et CLARANS
 

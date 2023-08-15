@@ -6,6 +6,7 @@ title: DBSCAN
 subtitle: Lecture et rédaction scientifiques
 directeur: Mr Ben Thaieb
 department: informatics
+discipline: informatics
 service: Master Sciences Informatique
 classoption:
   - oneside
@@ -221,7 +222,7 @@ Dans cette partie, on va s'intéresser aux performances entre DBSCAN et CLARANS,
 Comme CLARANS et DBSCAN sont deux algorithmes de regroupement distincts, il n'existe pas de mesure quantitative commune permettant d'évaluer précisément leur classification. L'évaluation faite ici est principalement visuelle.
 
 Une construction de différentes bases de données est utilisée pour comparer visuellement l'exécution de DBSCAN avec celui de CLARANS. Les données sont générées aléatoirement en suivant certains modèles, ceux-ci vont permettre une meilleure visualisation des différents algorithmes. Ils sont visibles sur la figure \ref{all_schemas}. Les divers modèles générés ont puisé leur inspiration à partir des ressources disponibles sur le site de scikit learn\footfullcite{scikit-learn-examples}. Cette source a également servi de référence pour la création et l'exécution du code visant à générer les divers schémas de regroupements.
- 
+
 ![Différentes base de données \label{all_schemas}](src/memoire-umons/images/new_versions/clusters_all.png)
 
 

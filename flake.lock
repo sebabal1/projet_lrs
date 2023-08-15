@@ -42,11 +42,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1692041224,
-        "narHash": "sha256-jCPB3pW8UU0Q5j13IpuukLLnZ1SjiMI1U7prE5/pX90=",
+        "lastModified": 1692071401,
+        "narHash": "sha256-t22Pqbc2alUaMj8aNRZ9DX6Sg86Q8jutN4Dt1kqZ2vc=",
         "owner": "drupol",
         "repo": "latex-umons",
-        "rev": "6d4ccbc51731ea6281c8014494e2755363c0ca28",
+        "rev": "badbe6865479ec3a936d28ce9fc88358289c25ab",
         "type": "github"
       },
       "original": {

@@ -5,8 +5,8 @@ documentclass: memoire-umons
 title: DBSCAN
 subtitle: Lecture et rédaction scientifiques
 directeur: Mr Ben Thaieb
-department: informatics
-discipline: informatics
+department: Informatics
+discipline: Informatics
 service: Master Sciences Informatique
 classoption:
   - oneside

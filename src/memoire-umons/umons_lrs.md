@@ -28,15 +28,20 @@ bibliography:
 ## Graphes
 Un graphe est composé d'un ensemble de points, appelés sommets, ceux-ci sont reliés entre eux par des lignes que l'on appelle des arêtes. Un sommet est représenté par un point et une arête par une ligne.
 
-On donne généralement comme définition pour un graphe cette notation : G = (V,E).
+On donne généralement comme définition pour un graphe cette notation : $G = (V,E)$.
 G est un couple (V,E) dans lequel, V est un ensemble fini de sommets et E est un ensemble d'arêtes, où chaque arête est un sous-ensemble de sommets de V noté : $\{v_{i}, v_{j}\} \in V^2$.
 
-Une arête est définie par une paire $\{v_{i},v_{j}\}$ et représentée graphiquement par $\{v_{i}-v_{j}\}$
+Une arête est une entité caractérisée par une paire de sommets $\{v_{i}, v_{j}\}$, elle est fréquemment représentée visuellement par la différence vectorielle entre ces deux sommets, c'est-à-dire $\{v_{i} - v_{j}\}$. Ces deux sommets sont considérés comme adjacents dans le contexte de l'arête. L'ensemble de ces sommets adjacents ${v_{i}} \in V$ est représenté sous la notation $Adj(v_{i}) = \{v_{i} \in V, \{v_{i},v_{j}\} \in E\}$
+
+Ajouter une image de la représentation d'un graphe
+ 
 
 
 
-## Cliques
+## Une Clique
 
+## Une Maximale Clique
+l
 ## Sparse Graphs
 
 

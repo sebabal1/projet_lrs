@@ -40,12 +40,11 @@ Ajouter une image de la représentation d'un graphe
 
 ## Une Clique
 
-Une clique, au point de vue de la théorie des graphes, représente un sous-ensemble de sommets dans lequel chaque paire de sommets est reliée. Ceux-ci sont tous connectés, on parle de sous-graphe complet. Sur la figure \ref{}, on peut constater un graphe qui possède X sommets, les sommets en rouge, numéroté X, définissent la notion de sous-graphe complet. 
+Une clique, au point de vue de la théorie des graphes, représente un sous-ensemble de sommets dans lequel chaque paire de sommets est reliée. Ceux-ci sont tous connectés, on parle de sous-graphe complet. Sur la figure \ref{todo}, on peut constater un graphe qui possède X sommets, les sommets en rouge, numéroté X, définissent la notion de sous-graphe complet. Plusieurs méthodes existent pour détecter des cliques dans un graphe donné, celles-ci sont généralement complexes à utiliser. Le plus problème le plus important dans la détection de clique est de trouver une structure de clique hiérarchique dans un réseau. 
+
+Une autre définition, Luce et Perry \ref{todo_Luce_Perry}, Une clique d'un graphe G est un sous-graphe complet maximal de G \ref{todo_luce_perry}. Une clique se forme à partir d'un groupe spécifique de points dans le graphe où chaque paire de points à l'intérieur du groupe est directement reliée, et aucun point en dehors de ce groupe n'a de connexions avec tous les points à l'intérieur.
 
 Ajouter une image d'un graphe avec un clique
-
-
-## Une Maximale Clique
 
 ## Sparse Graphs
 

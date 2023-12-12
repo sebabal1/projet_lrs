@@ -40,9 +40,15 @@ Ajouter une image de la représentation d'un graphe
 
 ## Une Clique
 
+Une clique, au point de vue de la théorie des graphes, représente un sous-ensemble de sommets dans lequel chaque paire de sommets est reliée. Ceux-ci sont tous connectés, on parle de sous-graphe complet. Sur la figure \ref{}, on peut constater un graphe qui possède X sommets, les sommets en rouge, numéroté X, définissent la notion de sous-graphe complet. 
+
+Ajouter une image d'un graphe avec un clique
+
+
 ## Une Maximale Clique
-l
+
 ## Sparse Graphs
 
+## Degenerescence
 
 \chapter{Algorithme de Bron-Kerbosh}

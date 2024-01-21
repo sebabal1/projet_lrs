@@ -22,6 +22,7 @@ bibliography:
 ---
 
 \chapter{Introduction}
+Dans cette partie, une brève mise en bouche du sujet avec une partie qui présentera les différents mots de vocabulaire que l'on utilisera dans l'article. Ensuite, une mise en avant du fonctionnement de l'algorithme ainsi qu'une démonstration de différents schémas et de l'utilisation des données pour montrer l'efficaciter de cet algorithme. Une explication sera fournie avec des commentaires sur l'algorithme qui sera intégré avec python ainsi que les graphes qui auront été généré
 
 \chapter{Les bases et notions de vocabulaire}
 
@@ -53,3 +54,7 @@ Un graphe est dit $\{d\}$-dégénéré si chaque sous-graphe (non-vide) contient
 
 
 \chapter{Algorithme de Bron-Kerbosh}
+
+\chapter{Présentation de l'algorithme de l'article}
+
+\chapter{Conclusion}

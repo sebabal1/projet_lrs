@@ -18,11 +18,12 @@ header-includes: |
 biblatex: true
 biblio-title: Bibliographie
 bibliography:
-  - src/memoire-umons/ref_cliques.bib
+  - src/memoire-umons/ref.bib
 ---
 
 \chapter{Introduction}
-Dans cette partie, une brève mise en bouche du sujet avec une partie qui présentera les différents mots de vocabulaire que l'on utilisera dans l'article. Ensuite, une mise en avant du fonctionnement de l'algorithme ainsi qu'une démonstration de différents schémas et de l'utilisation des données pour montrer l'efficaciter de cet algorithme. Une explication sera fournie avec des commentaires sur l'algorithme qui sera intégré avec python ainsi que les graphes qui auront été généré
+
+Dans cette partie, une brève mise en bouche du sujet avec une partie qui présentera les différents mots de vocabulaire que l'on utilisera dans l'article. Ensuite, une mise en avant du fonctionnement de l'algorithme ainsi qu'une démonstration de différents schémas et de l'utilisation des données pour montrer l'efficacité de cet algorithme. Une explication sera fournie avec des commentaires sur l'algorithme qui sera intégré avec python ainsi que les graphes qui auront été générés.
 
 \chapter{Les bases et notions de vocabulaire}
 
@@ -49,7 +50,7 @@ Une autre définition, Luce et Perry \ref{peay1974}, une clique d'un graphe G es
 
 La dégénérescence d'un graphe permet de mesuré sa "rareté", elle permet d'indiquer à quel point un graphe est loin d'être dense. Un graphe $\{d\}$-dégéréré est un graphe dans lequel chaque sous-graphe possède au moins un sommet de degré au plus de $\{d\}$. En grande majorité, la dégénérescence est comprise entre le degré minimum et le degré maximum ($\{d\}$).
 
-Un graphe est dit $\{d\}$-dégénéré si chaque sous-graphe (non-vide) contient au moins un sommet de dégré suppérieur à $\{d\}$. La dégénérescence dans un graphe est la plus petite valeur de $\{d\}$ telle qu'il soit d$\{d\}$-dégénéré. Dans l'article de Buchanan en 2013 \footfullcite{buchanan2013}, tout graphe $\{d\}$-dégénéré admet un certain ordre au niveau de ces sommets ($\{v_{1}\}$, ...,$\{v_{n}\}$) dans lequel chaque sommets $\{v_{i}\}$ a plus de $\{d\}$ voisins.
+Un graphe est dit $\{d\}$-dégénéré si chaque sous-graphe (non-vide) contient au moins un sommet de degré supérieur à $\{d\}$. La dégénérescence dans un graphe est la plus petite valeur de $\{d\}$ telle qu'il soit d$\{d\}$-dégénéré. Dans l'article de Buchanan en 2013 \footfullcite{buchanan2013}, tout graphe $\{d\}$-dégénéré admet un certain ordre au niveau de ces sommets ($\{v_{1}\}$, ...,$\{v_{n}\}$) dans lequel chaque sommet $\{v_{i}\}$ a plus de $\{d\}$ voisins.
 
 
 

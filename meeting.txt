@@ -1,0 +1,30 @@
+Réunion du 01/02/2024
+
+Mettre la page de garde en français 
+
+bable french
+
+TOute les lettres les mettre aussi en mathématique
+
+Taille d'une clique definition
+
+En italique quand on commence à le définir 
+et taille 
+
+format bibtex -> google scholae -< citer -> bibtext
+
+Dégénéresecne -> détailler, notion 2.1 de l'article
+
+Notion de sous graphe a définir -> graphe qui est composé s'eun sous enmble de v 
+
+Voir sur wikipedia pour la dégénéresecne 
+
+Petit exemple sur 4 ou 5 sommet
+
+définir la notion de degré
+
+Conversely importnant 2.1
+
+Il suffit de trouver un ordering 
+
+sparsity

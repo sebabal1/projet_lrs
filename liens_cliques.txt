@@ -10,3 +10,6 @@ https://fr.wikipedia.org/wiki/Clique_(th%C3%A9orie_des_graphes)
 https://www.jstor.org/stable/2786466 -> todo_luce_perry  -> https://sci-hub.ru/https://www.jstor.org/stable/2786466
 
 Dégénérescence : https://sci-hub.ru/https://link.springer.com/article/10.1007/s11590-013-0698-2
+
+
+Lien de l'article principal : https://sci-hub.ru/https://link.springer.com/chapter/10.1007/978-3-642-17517-6_36

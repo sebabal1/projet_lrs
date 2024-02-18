@@ -40,39 +40,40 @@ Une arête est une entité caractérisée par une paire de sommets $\{v_{i}, v_{
 
 ## Une Clique
 
-*Une clique*, au point de vue de la théorie des graphes, représente un sous-ensemble de sommets dans lequel chaque paire de sommets est reliée\cite{peay1974}.*La taille d'une clique* est un ensemble de $k$ noeuds dans lequel chaque paires de noeuds est reliée par une arête. Ceux-ci sont tous connectés, on parle de *sous-graphe* complet.
+*Une clique*, au point de vue de la théorie des graphes, représente un sous-ensemble de sommets dans lequel chaque paire de sommets est reliée\cite{peay1974}.*La taille d'une clique* est un ensemble de $k$ nœuds dans lequel chaque paire de nœuds est reliée par une arête. Ceux-ci sont tous connectés, on parle de *sous-graphe* complet.
 
 Un sous-graphe est un graphe se trouvant dans un autre graphe, la figure \ref{clique} représente un sous-graphe en vert dans un graphe en bleu.
 
-Sur la figure \ref{clique}, on peut constater un graphe qui possède 7 sommets, les sommets en vert, numéroté 2,3,5, forment une clique de taille 3. Plusieurs méthodes existent pour détecter des cliques dans un graphe donné, celles-ci sont généralement complexes à utiliser. L'application la plus importante dans la détection de cliques est de trouver le nombre maximum de clique dans un graphe. 
+Sur la figure \ref{clique}, on peut constater un graphe qui possède 7 sommets, les sommets en vert, numéroté 2,3,5, forment une clique de taille 3. Plusieurs méthodes existent pour détecter des cliques dans un graphe donné, celles-ci sont généralement complexes à utiliser. L'application la plus importante dans la détection de cliques est de trouver le nombre maximum de cliques dans un graphe. 
 
 ![Représentation d'une Clique \label{clique}](src/memoire-umons/images_graph/find_cliques.png){ width=250px }
 
 ## Dégénérescence 
 
-*La dégénérescence* dans la théorie des graphes, est un paramètre. Celle-ci est la plus petite valeur ($k$) de façon qu'il soit $k$-dégénéré, sous-graphe contenant au moins un sommet de *degré* supérieur à $k$\cite{buchanan2013}. Comme le défini Wikipédia\cite{degree_wiki}, *un dégré* d'un sommet dans la théorie des graphes, c'est le nombres de liens (arêtes) reliant ce sommet. 
+*La dégénérescence* dans la théorie des graphes, est un paramètre. Celle-ci est la plus petite valeur ($k$) de façon qu'il soit $k$-dégénéré, sous-graphe contenant au moins un sommet de *degré* supérieur à $k$\cite{buchanan2013}. Comme le défini Wikipédia\cite{degree_wiki}, *un degré* d'un sommet dans la théorie des graphes, c'est le nombre de liens (arêtes) reliant ce sommet. 
 
-L'article de Seidman\cite(seidman), présente qu'un $k$-core doit avoir au moins $k+1$ points, ainsi que les points de des différents $k$-core ne peuvent pas être adjacents. Prenons les exemples qui suivent, en changeant la valeur de $k$, on obtient différents sous-graphe.
+L'article de Seidman\cite(seidman), présente qu'un $k$-core doit avoir au moins $k+1$ points, ainsi que les points des différents $k$-core ne peuvent pas être adjacents. Prenons les exemples qui suivent, en changeant la valeur de $k$, on obtient différent sous-graphe.
 
-Le premier graphe est celui avec $k=0$, cela reprend tous les points du graphe \ref{0-core}. 
+Le premier graphe est celui avec $k=0$, cela reprend tous les points du graphe à la figure \ref{0-core}. 
 
 ![Dégénérescence 0 \label{0-core}](src/memoire-umons/images_graph/k_0_degenerescence.png){width=250px}
 
-Le graphe \ref{1-core} illustre un graphe de dégénérescence avec $k=1$. Tous les sommets sont inclus dans l'ensemble de ce sous-graphe, étant donné que chaque sommet est adjacent à au moins un autre sommet. La non-conformité à la condition $k=1$ surviendrait si un sommet n'était pas relié à un autre. Par exemple, le sommet $J$ ne respecte pas cette condition car il est isolé, n'ayant aucune arête incidente avec d'autres sommets.
+Le graphe de la figure \ref{1-core} illustre un graphe de dégénérescence avec $k=1$. Tous les sommets sont inclus dans l'ensemble de ce sous-graphe, étant donné que chaque sommet est adjacent à au moins un autre sommet. La non-conformité à la condition $k=1$ surviendrait si un sommet n'était pas relié à un autre. Par exemple, le sommet $J$ ne respecte pas cette condition, car il est isolé, n'ayant aucune arête incidente avec d'autres sommets.
 
 ![Dégénérescence 1 \label{1-core}](src/memoire-umons/images_graph/k_1_degenerescence.png){width=250px}
   
-Dans le graphe \ref{2-core}, avec $k=2$, nous notons que les sommets $A$ et $J$ ne sont pas inclus dans le sous-graphe. Ces sommets sont affichés en rouge pour indiquer qu'ils ne satisfont pas la contrainte de degré minimal égal ou supérieur à 2, conforme à la définition d'un 2-core.
+Dans le graphe de la figure \ref{2-core}, avec $k=2$, nous notons que les sommets $A$ et $J$ ne sont pas inclus dans le sous-graphe. Ces sommets sont affichés en rouge pour indiquer qu'ils ne satisfont pas la contrainte de degré minimal égal ou supérieur à 2, conforme à la définition d'un 2-core.
 
 ![Dégénérescence 2 \label{2-core}](src/memoire-umons/images_graph/k_2_degenerescence.png){width=250px}
 
-Pour une dégénérescence dans laquelle $k=3$, le graphe \ref{3-core}, ne regroupe pas dans le sous-graphe les sommets $A$, $F$ et $J$. Pour cette dernière représentation, c'est le point $F$ qui ne rentre pas dans les bonnes conditions.
+Pour une dégénérescence dans laquelle $k=3$, le graphe à la figure \ref{3-core}, ne regroupe pas dans le sous-graphe les sommets $A$, $F$ et $J$. Pour cette dernière représentation, c'est le point $F$ qui ne rentre pas dans les bonnes conditions.
 
 ![Dégénérescence 3 \label{3-core}](src/memoire-umons/images_graph/k_3_degenerescence.png){width=250px}
 
-La valeur maximum qui a été trouvé pour le graphe \ref{3-core}, est la valeur de $k=3$, si $k=4$ alors tous les somments ne feraient plus parties du sous-graphe car aucun ne respectera la condition minimum de 3 arêtes. 
+La valeur maximum qui a été trouvée pour le graphe à la figure \ref{3-core}, est la valeur de $k=3$, si $k=4$ alors tous les sommets ne feraient plus partie du sous-graphe, car aucun ne respectera la condition minimum de 3 arêtes. 
 
-La dégénérescence d'un graphe offre une mesure de sa structure interne, en mettant en évidence des sous-ensembles rassemblant des sommets. Cependant, malgré sa pertinance sur l'analyse des réseaux, la dégénérescence seule ne suffit pas toujours à capturer toutes les subtilités de la connectivité dans un graphe. Ainsi, dans le prochain chapitre, nous explorerons l'algorithme de Bron-Kerbosh, une méthode efficace pour identifier et explorer les cliques maximales dans un graphe, offrant ainsi une perspective plus approfondie sur ses motifs de connectivité.
+La dégénérescence d'un graphe offre une mesure de sa structure interne, en mettant en évidence des sous-ensembles rassemblant des sommets. Cependant, malgré sa pertinence sur l'analyse des réseaux, la dégénérescence seule ne suffit pas toujours à capturer toutes les subtilités de la connectivité dans un graphe. Ainsi, dans le prochain chapitre, nous explorerons l'algorithme de Bron-Kerbosh, une méthode efficace pour identifier et explorer les cliques maximales dans un graphe, offrant ainsi une perspective plus approfondie sur ses motifs de connectivité.
+
 
 
 \chapter{Algorithme de Bron-Kerbosh}

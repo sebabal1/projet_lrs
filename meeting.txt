@@ -28,3 +28,20 @@ Conversely importnant 2.1
 Il suffit de trouver un ordering 
 
 sparsity
+
+
+
+Ancien texte Dégénéresecne : 
+*La dégénérescence* d'un graphe permet de mesurer sa "rareté", 
+elle permet d'indiquer à quel point un graphe est loin d'être dense. 
+Un graphe $d$-dégénère est un graphe dans lequel chaque sous-graphe possède au moins un 
+sommet de degré au plus de $d$. En grande majorité, la dégénérescence est comprise entre 
+le degré minimum et le degré maximum ($d$).
+
+Un graphe est dit $d$-dégénéré si 
+chaque sous-graphe (non-vide) contient au moins
+ un sommet de degré supérieur à $d$. La dégénérescence 
+ dans un graphe est la plus petite valeur de $d$ telle qu'il 
+ soit $d$-dégénéré. Dans l'article de Buchanan en 2013 \cite{buchanan2013}, 
+ tout graphe $d$-dégénéré admet un certain ordre au niveau de ces sommets ($\{v_{1}\}$, ...,$\{v_{n}\}$) dans 
+ lequel chaque sommet $\{v_{i}\}$ a plus de $d$ voisins.

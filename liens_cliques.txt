@@ -13,3 +13,17 @@ Dégénérescence : https://sci-hub.ru/https://link.springer.com/article/10.1007
 
 
 Lien de l'article principal : https://sci-hub.ru/https://link.springer.com/chapter/10.1007/978-3-642-17517-6_36
+
+
+Articles sur l'algo : 
+Lien 1 : https://sci-hub.ru/https://link.springer.com/article/10.1007/BF00991836
+@article{johnston1976cliques,
+  title={Cliques of a graph-variations on the Bron-Kerbosch algorithm},
+  author={Johnston, HC},
+  journal={International Journal of Computer \& Information Sciences},
+  volume={5},
+  number={3},
+  pages={209--238},
+  year={1976},
+  publisher={Springer}
+}

@@ -72,18 +72,18 @@ Pour une dégénérescence dans laquelle $k=3$, le graphe à la figure \ref{3-co
 
 La valeur maximum qui a été trouvée pour le graphe à la figure \ref{3-core}, est la valeur de $k=3$, si $k=4$ alors tous les sommets ne feraient plus partie du sous-graphe, car aucun ne respectera la condition minimum de 3 arêtes. 
 
-La dégénérescence d'un graphe offre une mesure de sa structure interne, en mettant en évidence des sous-ensembles rassemblant des sommets. Cependant, malgré sa pertinence sur l'analyse des réseaux, la dégénérescence seule ne suffit pas toujours à capturer toutes les subtilités de la connectivité dans un graphe. Ainsi, dans le prochain chapitre, nous explorerons l'algorithme de Bron-Kerbosh, une méthode efficace pour identifier et explorer les cliques maximales dans un graphe, offrant ainsi une perspective plus approfondie sur ses motifs de connectivité.
+La dégénérescence d'un graphe offre une mesure de sa structure interne, en mettant en évidence des sous-ensembles rassemblant des sommets. Cependant, malgré sa pertinence sur l'analyse des réseaux, la dégénérescence seule ne suffit pas toujours à capturer toutes les subtilités de la connectivité dans un graphe. Ainsi, dans le prochain chapitre, nous explorerons l'algorithme de Bron-Kerbosch, une méthode efficace pour identifier et explorer les cliques maximales dans un graphe, offrant ainsi une perspective plus approfondie sur ses motifs de connectivité.
 
 \chapter{Algorithme de Bron-Kerbosch}
 
-L'algorithme de Bron-Kerbosch est un algorithme récursif, il cherche dans un graphe $G$ le nombre maximal de cliques. L'algorithme passe trois variables en paramètres, ceux-ci sont pour notre exemple, $R,P$ et $X$. L'équation $P \cup X = \Gamma(R)$ indique que pour la capturer les sommets que l'on veut ajouter au clique maximal, il faut prendre l'union de $P$ et $X$, ce qui donne tous les ensembles de tous les sommets qui ont été sélectionnés et ceux-ci sont tous connectés à tous les sommets de $P$. La valeur de $P$ représente l'ensemble de sommets déjà sélectionnés dans l'algorithme, $X$ représente un ensemble de sommets candidats à être ajoutés à l'ensemble sélectionné et $\Gamma(R)$ est l'ensemble des voisins de tous les sommets dans l'ensemble $R$.
+L'algorithme de Bron-Kerbosch est un algorithme récursif, il cherche dans un graphe $G$ le nombre maximal de cliques. L'algorithme passe trois variables en paramètres, ceux-ci sont pour notre exemple, $R,P$ et $X$. L'équation $P \cup X = \Gamma(R)$ indique que pour la capturer les sommets que l'on veut ajouter aux cliques maximales, il faut prendre l'union de $P$ et $X$, ce qui donne tous les ensembles de tous les sommets qui ont été sélectionnés et ceux-ci sont tous connectés à tous les sommets de $P$. La valeur de $P$ représente l'ensemble de sommets déjà sélectionnés dans l'algorithme, $X$ représente un ensemble de sommets candidats à être ajoutés à l'ensemble sélectionné et $\Gamma(R)$ est l'ensemble des voisins de tous les sommets dans l'ensemble $R$.
 
 ## Fonctionnement Bron-Kerbosh
 
-L'explication du fonctionnement de l'algorithme, se déroule en plusieurs étapes. La condition d'arrêt met en condition si l'union des ensembles $P$ et $X$ sont vides, cela implique qu'il n'y a plus de sommets candidats à pouvoir être ajouter à la clique, ce qui implique que la clique actuelle est maximale, on retourne la valeur $R$ comme clique maximal. La boucle principale, permet d'itérer sur chaque sommet $v$ dans l'ensemble $P$, l'algorithme fonctionne de façon récursive avec les ensembles renouvellés. $P \cap \Gamma(v)$, ceci reprend tous les sommets de $P$ qui sont voisins de $v$, $R \cup \{v\}$ c'est la clique qui est en cours de construction avec le somme $v$ ajouté, $X \cap \Gamma(v)$, ce sont les sommets de $X$ qui sont voisins de $v$. On retire par la suite $v$ de l'ensemble complet $P$ et on l'ajoute à l'ensemble $X$. L'algorithme se répète jusqu'à avoir parcouru tous les sommets de l'ensemble $P$.
+L'explication du fonctionnement de l'algorithme, se déroule en plusieurs étapes. La condition d'arrêt met en condition si l'union des ensembles $P$ et $X$ sont vides, cela implique qu'il n'y a plus de sommets candidats à pouvoir être ajouter à la clique, ce qui implique que la clique actuelle est maximale, on retourne la valeur $R$ comme clique maximale. La boucle principale, permet d'itérer sur chaque sommet $v$ dans l'ensemble $P$, l'algorithme fonctionne de façon récursive avec les ensembles renouvelés. $P \cap \Gamma(v)$, ceci reprend tous les sommets de $P$ qui sont voisins de $v$, $R \cup \{v\}$ c'est la clique qui est en cours de construction avec le somme $v$ ajouté, $X \cap \Gamma(v)$, ce sont les sommets de $X$ qui sont voisins de $v$. On retire par la suite $v$ de l'ensemble complet $P$ et on l'ajoute à l'ensemble $X$. L'algorithme se répète jusqu'à avoir parcouru tous les sommets de l'ensemble $P$.
 
-\begin{algorithm}
-\caption{BronKerbosch($P, R, X$)}
+
+Function BronKerbosch($P, R, X$)
 \begin{algorithmic}[1]
 \If{$P \cup X = \emptyset$}
     \State report $R$ as a maximal clique
@@ -94,25 +94,26 @@ L'explication du fonctionnement de l'algorithme, se déroule en plusieurs étape
     \State $X \gets X \cup \{v\}$
 \EndFor
 \end{algorithmic}
-\end{algorithm}
 
-Cette partie montre l'algorithme de Bron-Kerbosch à présent mettons ça en pratique sur un exemple bien concret. La section suivante montre un exemple dans lequel on parcourt l'algorithme pour les deux premiers cliques afin de mieux comprendre son fonctionnement pas à pas.
 
-## Exemple Bron-Kerbosh
+Cette partie montre l'algorithme de Bron-Kerbosch à présent mettons ça en pratique sur un exemple bien concret. La section suivante montre un exemple dans lequel on parcourt l'algorithme pour les deux premières cliques afin de mieux comprendre son fonctionnement pas à pas.
 
-La figure \ref{clique_bronkerbosch} représente le graphique sur lequel va se déroulé notre exemple et sur lequel l'algorithme de Bron-Kerbosch va être exécuté. 
+## Exemple Bron-Kerbosch
+
+La figure \ref{clique_bronkerbosch} représente le graphique sur lequel va se dérouler notre exemple et sur lequel l'algorithme de Bron-Kerbosch va être exécuté. 
 
 ![Graphique Bron-Kerbosh \label{clique_bronkerbosch}](src/memoire-umons/images_graph/clique_bronkerbosch.png){width=250px}
 
-Dans un premier temps, $v$ prendra la valeur de 1, c'est la première itération sur l'ensemble $P$. Celui-ci vaut $P = \{1,2,3,4,5,6,7,8,9\}$, lors de la première récusivité de l'algorithme, les différentes valeurs en paramètres sont $P \cap \Gamma(v) = \{9,2,3\}$,  $R \cup \{v\} = \{1\}$ et $X \cap \Gamma(v) = \{\}$. La valeur de $v$ passe à 9, ce qui fait que $P \cap \Gamma(v)$ et $X \cap \Gamma(v)$ sont tous deux vides, ce qui nous donnent notre première clique maximale\ref{clique_bronkerbosch_1_9}. 
+Dans un premier temps, $v$ prendra la valeur de 1, c'est la première itération sur l'ensemble $P$. Celui-ci vaut $P = \{1,2,3,4,5,6,7,8,9\}$, lors de la première récursivité de l'algorithme, les différentes valeurs en paramètres sont $P \cap \Gamma(v) = \{9,2,3\}$, $R \cup \{v\} = \{1\}$ et $X \cap \Gamma(v) = \{\}$. La valeur de $v$ passe à 9, ce qui fait que $P \cap \Gamma(v)$ et $X \cap \Gamma(v)$ sont tous deux vides, ce qui nous donne notre première clique maximale sur la figure \ref{clique_bronkerbosch_1_9}. 
 
 ![Graphique Bron-Kerbosh 1-9 \label{clique_bronkerbosch_1_9}](src/memoire-umons/images_graph/clique_bronkerbosch_1_9.png){width=250px}
 
-Ensuite, on va revenir à $v = 2$, ce qui implique que les valeurs de $P$ et $R$ changent également, $P \cap \Gamma(v) = \{3\}$,  $R \cup \{v\} = \{1,2\}$ et $X \cap \Gamma(v) = \{\}$. On passe à la valuer $v = 3$, ce qui a pour effet de rentrer dans la condition de sortie pour lesquelles $P$ et $X$ sont vides, ce qui donne notre deuxième cliques maximales\ref{clique_bronkerbosch_1_2_3}.
+Ensuite, on va revenir à $v = 2$, ce qui implique que les valeurs de $P$ et $R$ changent également, $P \cap \Gamma(v) = \{3\}$, $R \cup \{v\} = \{1,2\}$ et $X \cap \Gamma(v) = \{\}$. On passe à la valeur $v = 3$, ce qui a pour effet de rentrer dans la condition de sortie pour lesquelles $P$ et $X$ sont vides, ce qui donne notre deuxième clique maximale à la figure \ref{clique_bronkerbosch_1_2_3}.
 
 ![Graphique Bron-Kerbosh 1-2-3 \label{clique_bronkerbosch_1_2_3}](src/memoire-umons/images_graph/clique_bronkerbosch_1_2_3.png){width=250px}
 
-Au final, l'algorithme détecte six cliques maximales, ceux ci sont les deux premiers pour lesquelles les étapes ont été démontré, ainsi que les cliques : $R = \{8,4,6\}$, $R = \{8,9,5\}$, $R = \{8,9,6,7\}$, $R = \{9,6,7\}$
+Au final, l'algorithme détecte six cliques maximales, ceux-ci sont les deux premiers pour lesquelles les étapes ont été démontrées, ainsi que les cliques : $R = \{8,4,6\}$, $R = \{8,9,5\}$, $R = \{8,9,6,7\}$, $R = \{9,6,7\}$
+
 
 \chapter{Présentation de l'algorithme de l'article}
 

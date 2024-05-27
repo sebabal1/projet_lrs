@@ -101,7 +101,7 @@ Ensuite, on passe à $v = 2$, ce qui implique que les valeurs de $P$ et $R$ chan
 
 ![Graphique Bron-Kerbosh 1-2-3 \label{clique_bronkerbosch_1_2_3}](src/memoire-umons/images_graph/clique_bronkerbosch_1_2_3.png){width=250px}
 
-Au final, l'algorithme détecte six cliques maximales, ceux-ci sont les deux premiers pour lesquelles les étapes ont été démontrées, ainsi que les cliques : $R = \{8,4,6\}$, $R = \{8,9,5\}$, $R = \{8,9,6,7\}$, $R = \{9,6,7\}$
+Au final, l'algorithme détecte six cliques maximales, celles-ci sont les deux premieres pour lesquelles les étapes ont été démontrées, ainsi que les cliques : $R = \{8,4,6\}$, $R = \{8,9,5\}$, $R = \{8,9,6,7\}$, $R = \{9,6,7\}$. La constatation qui est faite est que l'algortihme de base de Bron-Kerbosh ne gère pas les doublons, c'est pour cette raison que nous avons les cliques $R = \{8,9,6,7\}$ et $R = \{9,6,7\}$. 
 
 A présent, que nous avons vu pas à pas le fonctionnement pour trois cliques maximale, penchons-nous sur le fonctionnement de l'algorithme de Bron-Kerbosch. C'est ce que va traiter le prochain chapitre de notre article.
 
@@ -124,8 +124,33 @@ Function BronKerbosch($P, R, X$)
 \EndFor
 \end{algorithmic}
 
+La modélisation suivante permet de visualiser l'algorithme d'une autre manière avec le détail de chaque paramètres à chaque itérations de l'algorithme \ref{bron_kerbosch_dessin}.
+
+![Diagrame Algorithme \label{bron_kerbosch_dessin}](src/memoire-umons/bron_kerbosch_algo_dessin.png){width=250px}
+
+
 Le prochain chapitre traite d'une variante de l'algorithme avec l'ajout d'un point de pivot. Celui-ci a pour effet de peut-être réduire les appels récursifs, la suite et les explications, nous donnerons la réponse à cette question.
 
-\chapter{Bron-Kerbosch et le pivotage}
+\chapter{Bron-Kerbosch Tomita et al}
+
+Dans ce chapitre, l'algorithme de Bron-Kerbosch est un peu modifié avec l'ajout d'un point de pivot. Celui-ci a pour objectif de réduire le nombre d'appels récursifs sur ce dernier. La notion clé est que pour tout sommet $u$ dans $P \cup X$, que l'on nommera pivot, toute clique maximale contient l'un des non-voisin de $u$. Ceci implique le fait de retarder l'ajout de sommet dans $P \cap \Gamma(u)$ à la clique. Tomita et al. (Todo mettre la ref), on garantit que l'algorithme de Bron-Kerbosch a un temps d'éxécution dans le pire des cas de O(3^{n/3}). On ne prouve pas dans l'article le détail de la complexité de l'algorithme. 
+
+Prenons un exemple avec un graphe $G$ de sommets ${1,2,3,4}$, lors de l'initialisation, $P$ vaut ${1,2,3,4}$ et $R$ et $X$ sont initialisé à vide. A présent, on choisit le point de pivot $u$ dans $P \cup X$, dans notre exemple (Todo ajouter la ref) le sommet 3 est la valeur qui maximise $\left| P \cap \Gamma(3) \right|$. Les voisins de $\Gamma(3)$ est l'ensemble ${1,2,4}$ et les non-voisins dans $P$ sont $P \setminus \Gamma(3) = \{\}$. 
+
+
+\chapter{Bron-Kerbosch et la Dégénérescence}
+
+
+
+Todo : Compléter la partie de Tomita et al avec des exemples
+
+Expliquer l'algorithme avec le principe de Dégénérescence 
+Ajouter dans la partie de Dégénérescence le fait que l'on va expliquer plus tard son importance 
+
+Ajouter les algo pour Tomita et l'autre
+Reprendre les schemas avant et expliquer les différences 
+Ajouter l'exemple du prof pour bien comprendre le cheminement
+
+Faire l'introduction et la conclusion
 
 \chapter{Conclusion}

@@ -133,10 +133,28 @@ Le prochain chapitre traite d'une variante de l'algorithme avec l'ajout d'un poi
 
 \chapter{Bron-Kerbosch Tomita et al}
 
-Dans ce chapitre, l'algorithme de Bron-Kerbosch est un peu modifié avec l'ajout d'un point de pivot. Celui-ci a pour objectif de réduire le nombre d'appels récursifs sur ce dernier. La notion clé est que pour tout sommet $u$ dans $P \cup X$, que l'on nommera pivot, toute clique maximale contient l'un des non-voisin de $u$. Ceci implique le fait de retarder l'ajout de sommet dans $P \cap \Gamma(u)$ à la clique. Tomita et al. (Todo mettre la ref), on garantit que l'algorithme de Bron-Kerbosch a un temps d'éxécution dans le pire des cas de O(3^{n/3}). On ne prouve pas dans l'article le détail de la complexité de l'algorithme. 
+Dans ce chapitre, l'algorithme de Bron-Kerbosch est un peu modifié avec l'ajout d'un point de pivot. Celui-ci a pour objectif de réduire le nombre d'appels récursifs sur ce dernier. La notion clé est que pour tout sommet $u$ dans $P \cup X$, que l'on nommera pivot, toute clique maximale contient l'un des non-voisin de $u$. Ceci implique le fait de retarder l'ajout de sommet dans $P \cap \Gamma(u)$ à la clique. Tomita et al. \cite{tomita2006worst}, on garantit que l'algorithme de Bron-Kerbosch a un temps d'éxécution dans le pire des cas de $O(3^{n/3})$. Les détails de la complexité de l'algorithme n'est pas détaillé dans l'article.
 
-Prenons un exemple avec un graphe $G$ de sommets ${1,2,3,4}$, lors de l'initialisation, $P$ vaut ${1,2,3,4}$ et $R$ et $X$ sont initialisé à vide. A présent, on choisit le point de pivot $u$ dans $P \cup X$, dans notre exemple (Todo ajouter la ref) le sommet 3 est la valeur qui maximise $\left| P \cap \Gamma(3) \right|$. Les voisins de $\Gamma(3)$ est l'ensemble ${1,2,4}$ et les non-voisins dans $P$ sont $P \setminus \Gamma(3) = \{\}$. 
+Prenons un exemple avec un graphe $G$ de sommets ${1,2,3,4}$, lors de l'initialisation, $P$ vaut ${1,2,3,4}$ et $R$ et $X$ sont initialisé à vide. A présent, on choisit le point de pivot $u$ dans $P \cup X$, dans notre exemple \ref{bron_kerbosch_pivot_dessin} le sommet 3 est la valeur qui maximise $\left| P \cap \Gamma(3) \right|$. Les voisins de $\Gamma(3)$ est l'ensemble ${1,2,4}$ et les non-voisins dans $P$ sont $P \setminus \Gamma(3) = \{\}$. 
 
+Une fois le pivot de choisit, on sélectionne le sommet qui lui est attaché. Ici c'est le sommet 3 qui maximise car il a 3 arêtes vers trois autres sommets. Le schéma \ref{bron_kerbosch_pivot_dessin} montre bien le détail pas à pas de l'algorithme sur le graphe $G$.
+
+![Diagrame Bron-Kerbosch Pivot \label{bron_kerbosch_pivot_dessin}](src/memoire-umons/pivot_kerbosch.png){width=250px}
+
+Le pseudo-code de l'algorithme Bron-Kerbosch avec un point de pivot vient de l'article \cite{allmaxcliques}.
+
+Function BronKerboschPivot($P, R, X$)
+\begin{algorithmic}[1]
+  \If{$P \cup X = \emptyset$}
+      \State report $R$ as a maximal clique
+  \EndIf
+  \State choose a pivot $u \in P \cup X$ \Comment{Tomita et al. choose $u$ to maximize $|P \cap \Gamma(u)|$}
+  \For{each vertex $v \in P \setminus \Gamma(u)$}
+      \State \Call{BronKerboschPivot}{$P \cap \Gamma(v), R \cup \{v\}, X \cap \Gamma(v)$}
+      \State $P \gets P \setminus \{v\}$
+      \State $X \gets X \cup \{v\}$
+  \EndFor
+\end{algorithmic}
 
 \chapter{Bron-Kerbosch et la Dégénérescence}
 

@@ -126,7 +126,7 @@ Function BronKerbosch($P, R, X$)
 
 La modélisation suivante permet de visualiser l'algorithme d'une autre manière avec le détail de chaque paramètres à chaque itérations de l'algorithme \ref{bron_kerbosch_dessin}.
 
-![Diagrame Algorithme \label{bron_kerbosch_dessin}](src/memoire-umons/images/bron_kerbosch_algo_dessin.png){width=250px}
+![Diagrame Algorithme \label{bron_kerbosch_dessin}](src/memoire-umons/images/bron_kerbosch_algo_dessin.png){width=300px}
 
 
 Le prochain chapitre traite d'une variante de l'algorithme avec l'ajout d'un point de pivot. Celui-ci a pour effet de peut-être réduire les appels récursifs, la suite et les explications, nous donnerons la réponse à cette question.
@@ -138,8 +138,6 @@ Dans ce chapitre, l'algorithme de Bron-Kerbosch est un peu modifié avec l'ajout
 Prenons un exemple avec un graphe $G$ de sommets ${1,2,3,4}$, lors de l'initialisation, $P$ vaut ${1,2,3,4}$ et $R$ et $X$ sont initialisé à vide. A présent, on choisit le point de pivot $u$ dans $P \cup X$, dans notre exemple \ref{bron_kerbosch_pivot_dessin}, le sommet 3 est la valeur qui maximise $\left| P \cap \Gamma(3) \right|$. Les voisins de $\Gamma(3)$ est l'ensemble ${1,2,4}$ et les non-voisins dans $P$ sont $P \setminus \Gamma(3) = \{\}$. 
 
 Lors de l'itération de la boucle à la ligne n°5 de l'algorithme de BronKerboschPivot, on ne choisit pas librement la valeur $v$ dans $P$, on choisit $v$ dans $P$ sans les voisins du pivot. On exclu les voisins du pivot, ce qui va limiter le nombre d'itération. Ici dans notre exemple, $P \ \Gamma(3)$ est vide, on ne fait aucun appel récursif pour cette étape, on passe à la deuxième itération avec la mise à jour des ensembles $P$ et $X$. On retire 3 de $P$ et on l'ajoute à $X$. Les valeurs pour $P$ sont l'ensemble ${1,2,4}$ et $X$ vaut 3. On choisit un nouveau pivot parmi l'ensemble ${1,2,3,4}$, on suppose $u = 2$, on calcule $P \ \Gamma(2)$, pour les valeurs $\Gamma(2) = {1,3}$ et $P \ \Gamma(2) = 4$. Le schéma \ref{bron_kerbosch_pivot_dessin} montre bien le détail pas à pas de l'algorithme sur le graphe $G$. On obtient à la fin deux cliques maximales, la clique ${1,2,3}$ et la clique ${3,4}$.
-
-![Diagrame Bron-Kerbosch Pivot \label{bron_kerbosch_pivot_dessin}](src/memoire-umons/images/pivot_kerbosch.png){width=250px}
 
 Le pseudo-code de l'algorithme Bron-Kerbosch avec un point de pivot vient de l'article \cite{allmaxcliques}. Les auteurs ont prouvé grâce à cet algorithme la génération de toutes les cliques maximales sans duplication.
 
@@ -155,6 +153,8 @@ Function BronKerboschPivot($P, R, X$)
       \State $X \gets X \cup \{v\}$
   \EndFor
 \end{algorithmic}
+
+![Diagrame Bron-Kerbosch Pivot \label{bron_kerbosch_pivot_dessin}](src/memoire-umons/images/pivot_kerbosch.png){width=250px}
 
 \chapter{Bron-Kerbosch et la Dégénérescence}
 

@@ -83,7 +83,7 @@ La dégénérescence d'un graphe offre une mesure de sa structure interne, en me
 
 A présent, voici l'algorithme de Bron-Kerbosch réalisé en 1973 par Coenraad Bron et Joep Kerbosch  \cite{bron_kerbosch}, celui-ci a pour but d'énumérer les cliques maximal possible dans un graphe $G$ de façon récursif. Lors de son premier appel à l'algorithme, les paramètres $R$ et $X$ sont mis à $0$, et $P$ contient l'ensemble de tous les sommets du graphe $G$. $R$ représente le résultat temporaire des sommets repris pour la future clique, $P$ est l'ensemble des sommets candidats possible et $X$ est l'ensemble des sommets qui sont exclus.
 
-Plusieurs notations mathématiques sont importantes à comprendre pour la suite. Commençons par $\Gamma(R)$ qui est définis par l'ensemble des voisins de tous les sommets dans l'ensemble $R$. Pour illustrer notre propos, sur la figure \ref{clique_bronkerbosch}, si on prend le point numéro 1, $\Gamma(R)$ vaut les valeurs ${2,3,9}$. Ce sont bien les voisins pour le sommet numéro 1. Pour décortiquer un peu l'équation suivante, $P \cup X = \Gamma(R)$, $P \cup X$ représente l'union de l'ensemble $P$ et de l'ensemble $X$, ce qui signifie que c'est un ensemble de tous les sommets qui sont soit candidats potentiels pour faire partie d'une clique, soit des sommets qui ont déjà été éliminés de la clique.
+Plusieurs notations mathématiques sont importantes à comprendre pour la suite. Commençons par $\Gamma(R)$ qui est défini par l'ensemble des voisins de tous les sommets dans l'ensemble $R$. Pour illustrer notre propos, sur la figure \ref{clique_bronkerbosch}, si on prend le point numéro 1, $\Gamma(R)$ vaut les valeurs ${2,3,9}$. Ce sont bien les voisins pour le sommet numéro 1. Pour décortiquer un peu l'équation suivante, $P \cup X = \Gamma(R)$, $P \cup X$ représente l'union de l'ensemble $P$ et de l'ensemble $X$, ce qui signifie que c'est un ensemble de tous les sommets qui sont soit candidats potentiels pour faire partie d'une clique, soit des sommets qui ont déjà été éliminés de la clique.
 
 Pour continuer sur la bonne compréhension de l'algorithme, il est pertinent d'illustrer son comportement à travers un exemple concret. Pour ce faire, nous allons examiner un cas où l'algorithme sort les deux premières cliques maximal, voir \ref{clique_bronkerbosch} à \ref{clique_bronkerbosch_1_2_3}.
 
@@ -101,14 +101,14 @@ Ensuite, on passe à $v = 2$, ce qui implique que les valeurs de $P$ et $R$ chan
 
 ![Graphique Bron-Kerbosh 1-2-3 \label{clique_bronkerbosch_1_2_3}](src/memoire-umons/images_graph/clique_bronkerbosch_1_2_3.png){width=250px}
 
-Au final, l'algorithme détecte six cliques maximales, celles-ci sont les deux premieres pour lesquelles les étapes ont été démontrées, ainsi que les cliques : $R = \{8,4,6\}$, $R = \{8,9,5\}$, $R = \{8,9,6,7\}$, $R = \{9,6,7\}$. La constatation qui est faite est que l'algortihme de base de Bron-Kerbosh ne gère pas les doublons, c'est pour cette raison que nous avons les cliques $R = \{8,9,6,7\}$ et $R = \{9,6,7\}$. 
+Au final, l'algorithme détecte six cliques maximales, celles-ci sont les deux premières pour lesquelles les étapes ont été démontrées, ainsi que les cliques : $R = \{8,4,6\}$, $R = \{8,9,5\}$, $R = \{8,9,6,7\}$, $R = \{9,6,7\}$. La constatation qui est faite est que l'algorithme de base de Bron-Kerbosh ne gère pas les doublons, c'est pour cette raison que nous avons les cliques $R = \{8,9,6,7\}$ et $R = \{9,6,7\}$. 
 
 A présent, que nous avons vu pas à pas le fonctionnement pour trois cliques maximale, penchons-nous sur le fonctionnement de l'algorithme de Bron-Kerbosch. C'est ce que va traiter le prochain chapitre de notre article.
 
 ## Fonctionnement Bron-Kerbosch
 
 Lors de l'explication du fonctionnement de l'algorithme, le but bien précis de ce dernier et d'énumérer les cliques maximales présentes dans un graphe $G$. Pour ce faire, celui-ci se déroule en plusieurs étapes. Au début de l'algorithme, une condition de sortie est prévue pour savoir si l'ensemble $P$ et $X$ sont vides. Si ceux-ci le sont, plus aucun sommet candidat ne peut être ajouté à la clique. Celle-ci devient donc une clique maximale, on retourne la valeur de l'ensemble de $R$. 
-On itère ainsi à travers tous les sommets de $P$($v$), en les ajoutant un par un à $R$ et en les retirant de $P$ et $X$. A l'intérieur de cette itération, on utilise à nouveau la fonction de Bron-Kerbosh, on passe en premier paramètre l'ensemble de tous les sommets de $P$ qui sont voisins de $v$ ($P \cap \Gamma(v)$). Le deuxième paramètre, est la clique qui est en cours de construction avec le sommet $v$, noté $R \cup \{v\}$. Ensuite en troisième paramètre, les sommets de $X$ qui sont voisins de $v$, avec la notation suivante : $X \cap \Gamma(v)$. Ce qui suit l'appel à la fonction, est la suppression du sommet $v$ de l'ensembe $P$ et l'ajout du somme $v$ à l'ensemble $X$. L'algorithme continue son itération jusqu'à avoir parcouru tous les sommets de l'ensemble $P$.
+On itère ainsi à travers tous les sommets de $P$($v$), en les ajoutant un par un à $R$ et en les retirant de $P$ et $X$. A l'intérieur de cette itération, on utilise à nouveau la fonction de Bron-Kerbosh, on passe en premier paramètre l'ensemble de tous les sommets de $P$ qui sont voisins de $v$ ($P \cap \Gamma(v)$). Le deuxième paramètre, est la clique qui est en cours de construction avec le sommet $v$, noté $R \cup \{v\}$. Ensuite en troisième paramètre, les sommets de $X$ qui sont voisins de $v$, avec la notation suivante : $X \cap \Gamma(v)$. Ce qui suit l'appel à la fonction est la suppression du sommet $v$ de l'ensemble $P$ et l'ajout du somme $v$ à l'ensemble $X$. L'algorithme continue son itération jusqu'à avoir parcouru tous les sommets de l'ensemble $P$.
 
 Ceci est le pseudo-code de l'algorithme de Bron Kerbosch présenté dans l'article "Listing all maximal cliques in sparse graphs in near-optimal time" \cite{allmaxcliques}.
 
@@ -124,9 +124,9 @@ Function BronKerbosch($P, R, X$)
 \EndFor
 \end{algorithmic}
 
-La modélisation suivante permet de visualiser l'algorithme d'une autre manière avec le détail de chaque paramètres à chaque itérations de l'algorithme \ref{bron_kerbosch_dessin}.
+La modélisation suivante permet de visualiser l'algorithme d'une autre manière avec le détail de chaque paramètre à cchaque itération de l'algorithme \ref{bron_kerbosch_dessin}.
 
-![Diagrame Algorithme \label{bron_kerbosch_dessin}](src/memoire-umons/images/bron_kerbosch_algo_dessin.png){width=300px}
+![Diagrame Bron-Kerbosch \label{bron_kerbosch_dessin}](src/memoire-umons/images/bron_kerbosch_algo_dessin.png){width=360px}
 
 
 Le prochain chapitre traite d'une variante de l'algorithme avec l'ajout d'un point de pivot. Celui-ci a pour effet de peut-être réduire les appels récursifs, la suite et les explications, nous donnerons la réponse à cette question.
@@ -135,9 +135,9 @@ Le prochain chapitre traite d'une variante de l'algorithme avec l'ajout d'un poi
 
 Dans ce chapitre, l'algorithme de Bron-Kerbosch est un peu modifié avec l'ajout d'un point de pivot. Celui-ci a pour objectif de réduire le nombre d'appels récursifs sur ce dernier. La notion clé est que pour tout sommet $u$ dans $P \cup X$, que l'on nommera pivot, toute clique maximale contient l'un des non-voisin de $u$. Ceci implique le fait de retarder l'ajout de sommet dans $P \cap \Gamma(u)$ à la clique. Dans lequel $\Gamma(u)$ représente les voisins de $u$. Tomita et al. \cite{tomita2006worst} garantit que l'algorithme de Bron-Kerbosch a un temps d'éxécution dans le pire des cas de $O(3^{n/3})$. Les détails de la complexité de l'algorithme n'est pas détaillé dans l'article.
 
-Prenons un exemple avec un graphe $G$ de sommets ${1,2,3,4}$, lors de l'initialisation, $P$ vaut ${1,2,3,4}$ et $R$ et $X$ sont initialisé à vide. A présent, on choisit le point de pivot $u$ dans $P \cup X$, dans notre exemple \ref{bron_kerbosch_pivot_dessin}, le sommet 3 est la valeur qui maximise $\left| P \cap \Gamma(3) \right|$. Les voisins de $\Gamma(3)$ est l'ensemble ${1,2,4}$ et les non-voisins dans $P$ sont $P \setminus \Gamma(3) = \{\}$. 
+Prenons un exemple avec un graphe $G$ de sommets $\{1,2,3,4\}$, lors de l'initialisation, $P$ vaut $\{1,2,3,4\}$ et $R$ et $X$ sont initialisés à vide. À présent, on choisit le point de pivot $u$ dans $P \cup X$, dans notre exemple \ref{bron_kerbosch_pivot_dessin}, le sommet 3 est la valeur qui maximise $\left| P \cap \Gamma(3) \right|$. Les voisins de $\Gamma(3)$ est l'ensemble $\{1,2,4\}$ et les non-voisins dans $P$ sont $P \setminus \Gamma(3) = \{\}$. 
 
-Lors de l'itération de la boucle à la ligne n°5 de l'algorithme de BronKerboschPivot, on ne choisit pas librement la valeur $v$ dans $P$, on choisit $v$ dans $P$ sans les voisins du pivot. On exclu les voisins du pivot, ce qui va limiter le nombre d'itération. Ici dans notre exemple, $P \ \Gamma(3)$ est vide, on ne fait aucun appel récursif pour cette étape, on passe à la deuxième itération avec la mise à jour des ensembles $P$ et $X$. On retire 3 de $P$ et on l'ajoute à $X$. Les valeurs pour $P$ sont l'ensemble ${1,2,4}$ et $X$ vaut 3. On choisit un nouveau pivot parmi l'ensemble ${1,2,3,4}$, on suppose $u = 2$, on calcule $P \ \Gamma(2)$, pour les valeurs $\Gamma(2) = {1,3}$ et $P \ \Gamma(2) = 4$. Le schéma \ref{bron_kerbosch_pivot_dessin} montre bien le détail pas à pas de l'algorithme sur le graphe $G$. On obtient à la fin deux cliques maximales, la clique ${1,2,3}$ et la clique ${3,4}$.
+Lors de l'itération de la boucle à la ligne n°5 de l'algorithme de BronKerboschPivot, on ne choisit pas librement la valeur $v$ dans $P$, on choisit $v$ dans $P$ sans les voisins du pivot. On exclu les voisins du pivot, ce qui va limiter le nombre d'itérations. Ici dans notre exemple, $P \setminus \Gamma(3)$ est vide, on ne fait aucun appel récursif pour cette étape, on passe à la deuxième itération avec la mise à jour des ensembles $P$ et $X$. On retire 3 de $P$ et on l'ajoute à $X$. Les valeurs pour $P$ sont l'ensemble $\{1,2,4\}$ et $X$ vaut 3. On choisit un nouveau pivot parmi l'ensemble $\{1,2,3,4\}$, on suppose $u = 2$, on calcule $P \setminus \Gamma(2)$, pour les valeurs $\Gamma(2) = \{1,3\}$ et $P \setminus \Gamma(2) = 4$. Le schéma \ref{bron_kerbosch_pivot_dessin} montre bien le détail pas à pas de l'algorithme sur le graphe $G$. On obtient à la fin deux cliques maximales, la clique $\{1,2,3\}$ et la clique $\{3,4\}$.
 
 Le pseudo-code de l'algorithme Bron-Kerbosch avec un point de pivot vient de l'article \cite{allmaxcliques}. Les auteurs ont prouvé grâce à cet algorithme la génération de toutes les cliques maximales sans duplication.
 
@@ -154,7 +154,7 @@ Function BronKerboschPivot($P, R, X$)
   \EndFor
 \end{algorithmic}
 
-![Diagrame Bron-Kerbosch Pivot \label{bron_kerbosch_pivot_dessin}](src/memoire-umons/images/pivot_kerbosch.png){width=250px}
+![Diagrame Bron-Kerbosch Pivot \label{bron_kerbosch_pivot_dessin}](src/memoire-umons/images/pivot_kerbosch.png){width=400px}
 
 \chapter{Bron-Kerbosch et la Dégénérescence}
 

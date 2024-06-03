@@ -23,9 +23,21 @@ bibliography:
 
 \chapter{Introduction}
 
-Dans cette partie, une brève mise en bouche du sujet avec une partie qui présentera les différents mots de vocabulaire que l'on utilisera dans l'article. Ensuite, une mise en avant du fonctionnement de l'algorithme ainsi qu'une démonstration de différents schémas et de l'utilisation des données pour montrer l'efficacité de cet algorithme. Une explication sera fournie avec des commentaires sur l'algorithme qui sera intégré avec python ainsi que les graphes qui auront été générés.
+Dans le cadre de cet article, nous nous penchons sur les algorithmes de recherche de cliques maximales dans les graphes, une thématique essentielle en théorie des graphes et en informatique théorique. Ces algorithmes jouent un rôle crucial dans divers domaines allant de l'analyse des réseaux sociaux à la bioinformatique, en passant par la chimie et la physique des matériaux. Notre étude se concentre particulièrement sur les contributions et les améliorations apportées aux algorithmes de Bron-Kerbosch, une méthode classique et largement utilisée pour trouver toutes les cliques maximales d'un graphe.
+
+Le premier chapitre de cet article est consacré à l'établissement des bases nécessaires pour comprendre l'ensemble de notre travail. Il contient une présentation détaillée des notions fondamentales et du vocabulaire spécifique à l'analyse des graphes. Ce chapitre sert de guide pour les termes techniques et les concepts qui seront utilisés tout au long de cet article, garantissant ainsi une compréhension claire et approfondie des discussions ultérieures.
+
+Dans le deuxième chapitre, nous nous concentrons sur l'algorithme original de Bron-Kerbosch. Nous y fournissons une explication détaillée de son fonctionnement, y compris les mécanismes et les étapes clés de cet algorithme. Ce chapitre vise à offrir une compréhension complète de cet algorithme classique, qui constitue la base de nos explorations et modifications subséquentes.
+
+Le troisième chapitre introduit une amélioration notable de l'algorithme de Bron-Kerbosch, à savoir l'ajout d'un point de pivot selon l'approche de Tomita et al. Cette technique de pivotage permet d'optimiser l'algorithme en réduisant le nombre de récursions nécessaires, ce qui améliore significativement son efficacité. Nous détaillons ici le fonctionnement de cette modification et démontrons son impact sur les performances de l'algorithme.
+
+Enfin, le dernier chapitre traite de l'algorithme BronKerboschDegeneracy, une version avancée de l'algorithme de Bron-Kerbosch qui incorpore le concept de dégénérescence des graphes. Cette approche utilise la structure de dégénérescence pour réduire davantage la complexité de la recherche de cliques maximales. Nous explorons comment cet algorithme utilise la dégénérescence pour optimiser les calculs et présenter des résultats plus rapidement et efficacement.
+
+Au fil de la lecture de cet article, nous souhaitons découvrir les améliorations et les optimisations possibles des algorithmes de recherche de cliques maximales. Nous présenterons les concepts de base, les algorithmes initiaux et leurs évolutions, en mettant en lumière les contributions et les innovations qui ont permis de rendre ces méthodes plus performantes. En fin de parcours, le lecteur aura acquis une compréhension approfondie des algorithmes de Bron-Kerbosch et de leurs améliorations, ainsi que des techniques modernes utilisées pour optimiser la recherche de cliques maximales dans les graphes.
 
 \chapter{Les bases et notions de vocabulaire}
+
+Ce chapitre est dédié à l'explication des concepts fondamentaux et à la clarification de certains termes essentiels pour une bonne compréhension de l'article. Ces notions incluent la définition d'un graphe, l'explication des cliques, ainsi que les concepts de clique maximale et de clique maximum. La notion de dégénérescence est particulièrement importante, car elle est utilisée ultérieurement dans l'un des algorithmes présentés par les auteurs \cite{allmaxcliques}.
 
 ## Graphes
 *Un graphe* est composé d'un ensemble sommets, ceux-ci sont reliés entre eux par des arêtes. Au niveau de la représentation, un sommet est représenté par un point et une arête par une ligne.
@@ -156,22 +168,44 @@ Function BronKerboschPivot($P, R, X$)
 
 ![Diagrame Bron-Kerbosch Pivot \label{bron_kerbosch_pivot_dessin}](src/memoire-umons/images/pivot_kerbosch.png){width=400px}
 
+Le prochain chapitre va utilisé une notion vue précédement ainsi que l'utilisation d'un point pivot.
+
 \chapter{Bron-Kerbosch et la Dégénérescence}
 
-Voici l'amélioration de l'algorithme proposé dans l'article et qui exploite la dégénérescence que nous avons vu dans la section 2.
+Ce chapitre est consacré à l'explication de l'algorithme proposé par les auteurs dans leur article \cite{allmaxcliques}. Ils y présentent une amélioration de l'algorithme de Bron-Kerbosch en exploitant la dégénérescence, abordée dans la section 2, ainsi que la stratégie de pivot.
+
+Pour une bonne compréhension du fonctionnement de l'algorithme, la figure \ref{diagramme_degeneracy_dessin} permettra de suivre pas à pas les valeurs obtenues. La première observation faite par les auteurs \cite{allmaxcliques} est que lors du traitement d'une clique $R$, les voisins communs de $R$ peuvent être partitionnés en deux ensembles : $P$, qui comprend les sommets situés après le dernier sommet de $R$, et $X$, qui contient les voisins restants.
+
+L'utilisation de la stratégie de pivot de Tomita et al. \cite{tomita2006worst} permet de générer les cliques maximales qui contiennent chaque sommet dans $R$, quelques sommets dans $P$ et aucun sommet dans $X$, sans doublons. (Voir la preuve de Tomita et al. \cite{tomita2006worst})
+
+Concernant la dégénérescence, soit $C$ une clique maximale, et $v$ son premier sommet dans l'ordre de dégénérescence. D'après Tomita et al \cite{tomita2006worst}., $C$ est reportée une seule fois lors du traitement de $v$. Si l'on traite un autre sommet de $C$, $v$ est placé dans $X$. Dans notre exemple, l'ordre de dégénérescence est le suivant : $\{4,1,2,3\}$. Le sommet 4 a comme voisin le sommet 3, ce qui en fait le premier dans l'ordre, tandis que le sommet 3 a 3 sommets $(\{1,2,4\})$ comme voisins, ce qui en fait le dernier.
+
+Lors de l'appel à BronKerboschPivot, on passe un sous-graphe $H_(P,X)$​. Au début, $P=3$ et $X=0$. On obtient alors $R=4$, ce qui nous donne finalement une clique maximale $R=\{3,4\}$. Celle-ci répond à la règle qu'une arête $(u,v)$ de $G$ est sélectionnée comme une arête de $H_(P,X)$​ si le pivot $u$ ou le sommet $v$ appartient à $P$ et que les deux appartiennent à l'ensemble $P \cup X$. Le pivot choisi selon Tomita et al. \cite{tomita2006worst} est celui qui a le plus de voisins dans $P$.
+
+Ensuite, l'algorithme prend le sommet 1, suivant l'ordre de dégénérescence. Cet ordre est calculé en retirant de façon itérative le sommet ayant le moins d'arêtes avec ses voisins. Les sommets 1 et 2 sont les suivants. On obtient les valeurs $\{2,3\}$ pour $P$, $R=1$ et $X=0$. Ensuite, le sommet 2 est sélectionné, les valeurs de l'ensemble $R$ sont $\{1,2\}$, $P=3$ et $X=0$. La dernière itération sur cet ensemble donne la dernière clique maximale $R=\{1,2,3\}$.
+
+La principale différence se trouve à la ligne n°1 de l'algorithme de BronKerboschDegeneracy, où l'on utilise cette notion de dégénérescence pour favoriser un ordre de passage pour BronKerboschPivot à la ligne 4. Grâce à cet ordonnancement, les auteurs ont démontré qu'ils ont pu obtenir un temps de $O(dn3^{d/3})$. La variable $d$ représente le plus petit entier tel que chaque sous-graphe du graphe contient un sommet avec au plus $d$ voisins.
+
+L'algorithme de BronKerboschDegeneracy vient de l'article des auteurs \cite{allmaxcliques}. Les deux paramètres de l'algorithme sont l'ensemble des sommets du graphe, noté $V$, et l'ensemble des arêtes du graphe, noté $E$.
+
+Function BronKerboschDegeneracy($V, E$)
+\begin{algorithmic}[1]
+    \For{\textbf{each} vertex $v_i$ in a degeneracy ordering $v_0 , v_1 , v_2 , ...$ of $(V, E)$}
+        \State $P \gets \Gamma(v_i) \cap \{v_{i+1}, ..., v_{n-1}\}$
+        \State $X \gets \Gamma(v_i) \cap \{v_0 , ..., v_{i-1}\}$
+        \State \textsc{BronKerboschPivot}($P$, $\{v_i\}$, $X$)
+    \EndFor
+\end{algorithmic}
 
 
-Todo : Compléter la partie de Tomita et al avec des exemples
+![Diagrame Bron-Kerbosch Dégénérescence \label{diagramme_degeneracy_dessin}](src/memoire-umons/images/diagramme_degeneracy_dessin.png){width=400px}
 
-Expliquer l'algorithme avec le principe de Dégénérescence 
-Ajouter dans la partie de Dégénérescence le fait que l'on va expliquer plus tard son importance 
-
-Ajouter les algo pour Tomita et l'autre
-Reprendre les schemas avant et expliquer les différences 
-Ajouter l'exemple du prof pour bien comprendre le cheminement
-
-Revoir video à 23min
-Revoir à partir de 25 min
-Faire l'introduction et la conclusion
 
 \chapter{Conclusion}
+Au cours de ce mémoire, nous avons exploré en profondeur les algorithmes de recherche de cliques maximales dans les graphes, en mettant l'accent sur l'algorithme de Bron-Kerbosch et ses améliorations. Nous avons commencé par poser les bases nécessaires à la compréhension de notre étude en définissant les concepts et le vocabulaire essentiels en théorie des graphes.
+
+Le deuxième chapitre nous a permis d'examiner l'algorithme de Bron-Kerbosch dans sa forme originale, fournissant une compréhension détaillée de ses mécanismes et de ses performances. Nous avons ensuite introduit une optimisation clé dans le troisième chapitre : l'ajout d'un point de pivot selon l'approche de Tomita et al., démontrant comment cette modification améliore l'efficacité de l'algorithme.
+
+Enfin, le dernier chapitre a exploré l'algorithme de BronKerboschDegeneracy, qui utilise la notion de dégénérescence des graphes et la combinaison avec le point de pivot pour optimiser la recherche de cliques maximales. Nous avons montré que le problème est traitable par des paramètres fixes en terme de dégénérescence du graphe. Cette légère modification permet d'atteindre des performances optimales en fonction de la dégénérescence.
+
+Pour conclure, la dégénérescence est un atout qui permet de diminuer le temps d'exécution de l'algorithme suite au fait que l'exposant est sur $d$ divisé par 3, comparé à l'algorithme de base qui a une complexité en exposant $n$. Ce qui siginifie qu'un graphe qui a une faible dégénérescence va pouvoir déterminer les cliques d'une manière beaucoup plus rapide comparé à un graphe qui a une dégénérescence plus élévée ou si sur ce graphe on utilise l'algorithme de base.

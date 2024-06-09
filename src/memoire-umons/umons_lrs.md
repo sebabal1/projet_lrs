@@ -12,11 +12,13 @@ classoption:
   - oneside
 toc: true
 graphics: true
-\providetranslation[to=french]{Master's Thesis submitted by}{%
-  Travail r\'ealis\'e par}
 header-includes: |
   \usepackage{algpseudocode}
   \usepackage[french]{babel}
+  \AtBeginDocument{%
+    \renewtranslation[to=french]{Master's Thesis submitted by}{Travail réalisé par}
+    \renewtranslation[to=french]{umons@obtain@master}{dans le cadre du Master en}
+  }
 biblatex: true
 biblio-title: Bibliographie
 bibliography:
@@ -200,7 +202,7 @@ Function BronKerboschDegeneracy($V, E$)
 \end{algorithmic}
 
 
-Pour vérifier la différence entre l'algorithme avec pivot et celui avec dégénérescence, une petite implémentation en python est réalisée affichant le temps d'exécution et le nombre d'itérations. Les valeurs obtenues sont faites avec l'exemple présent pour ces deux algorithmes, celui de BronKerboschPivot obtient $Nb_iterations = 5$ et $Temps_exec = 0.00066 secondes$, BronKerboschDegeneracy obtient $Nb_iterations = 7$ et $Temps_exec = 0.00018 secondes$. On remarque une différence au niveau du nombre d'exécutions entre les deux, celle-ci peut s'expliquer par le fait que celui avec dégénérescence explore chaque branche du graphe, même si elle semble redondante, pour s'assurer que toutes les cliques maximales sont découvertes. Notre graphe est très petit, ce qui ne permet pas forcément de constater l'amélioration entre celui avec pivot et celui avec la dégénérescence, même si au niveau du temp d'exécution, celui avec dégénérescence est plus rapide. Celui avec pivot peut varier et conduire à un nombre d'itérations moindre si le pivot choisi est très efficace pour réduire rapidement $P$. L'algorithme BronKerboschPivot peut limiter le nombre de branches à explorer en excluant les voisins du pivot, tandis que celui avec dégénérescence explore chaque possibilité. En revanche, ce sont sur des graphes plus grands ou plus complexes, que l'algorithme de BronKerboschDegeneracy montre une efficacité supérieur en terme de réduction des branches explorées.
+Pour vérifier la différence entre l'algorithme avec pivot et celui avec dégénérescence, une petite implémentation en python est réalisée affichant le temps d'exécution et le nombre d'itérations. Les valeurs obtenues sont faites avec l'exemple présent pour ces deux algorithmes, celui de BronKerboschPivot obtient $NbIterations = 5$ et $Temps = 0.00066$ secondes, BronKerboschDegeneracy obtient $NbIterations = 7$ et $Temps = 0.00018$ secondes. On remarque une différence au niveau du nombre d'exécutions entre les deux, celle-ci peut s'expliquer par le fait que celui avec dégénérescence explore chaque branche du graphe, même si elle semble redondante, pour s'assurer que toutes les cliques maximales sont découvertes. Notre graphe est très petit, ce qui ne permet pas forcément de constater l'amélioration entre celui avec pivot et celui avec la dégénérescence, même si au niveau du temp d'exécution, celui avec dégénérescence est plus rapide. Celui avec pivot peut varier et conduire à un nombre d'itérations moindre si le pivot choisi est très efficace pour réduire rapidement $P$. L'algorithme BronKerboschPivot peut limiter le nombre de branches à explorer en excluant les voisins du pivot, tandis que celui avec dégénérescence explore chaque possibilité. En revanche, ce sont sur des graphes plus grands ou plus complexes, que l'algorithme de BronKerboschDegeneracy montre une efficacité supérieur en terme de réduction des branches explorées.
 
 ![Diagrame Bron-Kerbosch Dégénérescence \label{diagramme_degeneracy_dessin}](src/memoire-umons/images/diagramme_degeneracy_dessin.png){width=400px}
 
